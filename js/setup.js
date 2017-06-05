@@ -8,17 +8,16 @@ import {
 } from 'react-native';
 
 import App from './app'
-import RedditStore from './store/redditStore'
 
 import { inject, observer } from 'mobx-react/native'
 
-const redditStore = new RedditStore()
+//const redditStore = new RedditStore()
 
 @observer
 class Root extends Component {
     render() {
         return (
-                <App redditStore={redditStore}/> 
+                <App/> 
         );
     }
 }

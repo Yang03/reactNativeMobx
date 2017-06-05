@@ -9,4 +9,6 @@ dependencies: \
   /Users/baixing/reactNativeMobx/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
   /Users/baixing/reactNativeMobx/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
   /Users/baixing/reactNativeMobx/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
-  /Users/baixing/reactNativeMobx/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h
+  /Users/baixing/reactNativeMobx/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/baixing/reactNativeMobx/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLinkingManager.h \
+  /Users/baixing/reactNativeMobx/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventEmitter.h

@@ -1,7 +1,7 @@
 import express from 'express'
 import passport from 'passport'
 import storage from 'node-persist'
-import pg from 'passport-github2'
+import {Strategy} from 'passport-github'
 import { config } from './config'
 
 
@@ -9,13 +9,12 @@ storage.initSync()
 
 const app = express()
 
-const GithubStrategy = pg.Strategy
 
 app.use(passport.initialize())
 app.use(passport.session())
 
 passport.use(
-  new GithubStrategy({
+  new Strategy({
     clientID: config.github.clientId,
     clientSecret: config.github.clientSecret,
     callbackURL: `http://${config.host}:${config.port}/login/callback`,
@@ -38,22 +37,27 @@ passport.deserializeUser((id, done) =>
 
 app.get('/login', passport.authenticate('github'), (req, res) => {
     console.log('login')
-    console.log(req)
+   // console.log(req)
 })
 app.get('/login/callback',  passport.authenticate(
-    'github',
-    { failureRedirect: '/login' }),(req, res) => {
-        console.log(req.user)
+        'github', { failureRedirect: '/login' }
+    ),
+    (req, res) => {
+        res.redirect(`rn://${req.user.accessToken}`)
+        console.log('callback')
 })
 
-const findUser = predicate => storage.values().find(predicate);
+const findUser = (predicate) => {
+    return storage.values().find(predicate)
+}
 
-app.get('/user', (req, res) => {
-  const user = findUser(u => u.accessToken === req.query.accessToken);
+
+app.get('/user/:accessToken', (req, res) => {
+  const user = findUser(u => u.accessToken === req.params.accessToken)
   if (user) {
-    res.status(200).send(formatUser(user._json));
+    res.status(200).send(formatUser(user._json))
   }
-  res.status(404).send();
+  res.status(404).send()
 });
 
 

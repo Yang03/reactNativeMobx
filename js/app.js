@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { observer } from  'mobx-react/native'
-import {
-  StyleSheet,
-  View,
-} from 'react-native'
-
-import ListItems from './listItems'
+import Login from './login'
 
 @observer
 export default class App extends Component {
@@ -13,14 +8,12 @@ export default class App extends Component {
 		super(props, context)
 	}
     componentWillMount() {
-        this.props.redditStore.getReddites()
+        //this.props.redditStore.getReddites()
     }
     render() {
         const {redditStore} = this.props
         return (
-                <View>
-                    <ListItems redditStore={redditStore}></ListItems>
-                </View>    
+                <Login/>                   
         )
     }
 }
